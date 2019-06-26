@@ -28,6 +28,30 @@ Example
 
 ## Usage
 
-MODE 'Original' | 'Temporary'
+**Environment variables:**
 
-docker run -it -e USER="Administrator@vsphere.local" -e PASS="password" -e URL="vsphere.local" -e MODE="Original" -v "$PWD/VMs.json:/VMs.json" kristianfjones/vsphere-migrator
+| Variable | Description |
+| :--- | --- |
+| `MODE` | Direction in which to migrate VM Storage to Original or Temporary datastore |
+| `URL` | vCenter URL |
+| `USER` | vCenter Username |
+| `PASS` | vCenter Password |
+| `SLACK_TOKEN` | Optional Slack Messages on each VM Migration, time taken to migrate, and message upon completion of all migrations |
+| `SLACK_CHANNEL` | Optional Slack Channel to post in |
+----
+**.env Example:**
+```
+URL="vsphere.local"
+USER="Administrator@vsphere.local"
+PASS="password"
+MODE=Original
+SLACK_TOKEN=XYZNSJ
+SLACK_CHANNEL=srv-change-management
+```
+
+**Basic usage**
+```bash
+$ docker run -d --env-file .env \
+    -v "$PWD/VMs.json:/VMs.json" \
+    kristianfjones/vsphere-migrator
+```

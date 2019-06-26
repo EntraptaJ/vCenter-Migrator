@@ -1,8 +1,10 @@
 import * as Shell from 'node-powershell';
+import { WebClient } from '@slack/web-api'
 import { readJSON } from 'fs-extra';
 import { run } from './lib/run';
 import { migrateVMStorage } from './lib/Migrate'
 import { VMsType, DataJSON } from './types';
+import { sendSlack } from './lib/Slack';
 
 const LoadJSON = <P>(file: string): Promise<P> => readJSON(file);
 
@@ -19,12 +21,15 @@ const password = process.env.PASS;
 
 /* type ModeType = 'VMs' | 'Storage'
 const Mode: ModeType = 'Storage' */
+export let SLACK_WEB: WebClient
 
 const Start = async () => {
+  // Initialize
   const ps = new Shell({
     executionPolicy: 'Bypass',
     noProfile: true,
   });
+  if (process.env.SLACK_TOKEN) SLACK_WEB = new WebClient(process.env.SLACK_TOKEN);
 
   await run(ps, 'Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false')
   await run(ps, `Connect-VIServer -Server ${URL} -Protocol https -Username ${username} -Password ${password}`);
@@ -32,6 +37,8 @@ const Start = async () => {
   const VMs = await LoadVMsFile();
 
   for (const VM of VMs) await migrateVMStorage(ps, VM)
+
+  if (SLACK_WEB) sendSlack('Migrations done')
 
   console.log('Done');
   await ps.dispose();

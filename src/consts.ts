@@ -1,0 +1,1 @@
+export const SLACK_CHANNEL = process.env.SLACK_CHANNEL
