@@ -1,0 +1,10 @@
+{
+  "include": ["src/**/*.ts", "src/VMs.json"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "rootDir": "./src",
+    "outDir": "dist"
+  },
+  "exclude": ["node_modules", "dist"]
+}

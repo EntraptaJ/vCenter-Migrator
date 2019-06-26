@@ -1,0 +1,17 @@
+{
+  "data": {
+    "Hosts": [
+      {
+        "name": "172.28.11.45",
+        "VMs": [{ "name": "GNS3", "originalStorage": "VMHost1.vDSK2", "tempStorage": "vmh1.vdsk1" }]
+      },
+      {
+        "name": "172.28.11.46",
+        "VMs": [
+          { "name": "Hello-World", "originalStorage": "VMHost1.vDSK2", "tempStorage": "vmh1.vdsk1" },
+          { "name": "PRTG", "originalStorage": "vmh1.vdsk1", "tempStorage": "VMHost1.vDSK2" }
+        ]
+      }
+    ]
+  }
+}

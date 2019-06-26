@@ -1,0 +1,122 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": ["hosts"],
+  "properties": {
+    "hosts": {
+      "$id": "#/properties/hosts",
+      "type": "array",
+      "title": "The Hosts Schema",
+      "items": {
+        "$id": "#/properties/hosts/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": ["name", "VMs"],
+        "properties": {
+          "name": {
+            "$id": "#/properties/hosts/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "description": "Name of the VMHost",
+            "default": "",
+            "examples": ["172.28.11.45"],
+            "pattern": "^(.*)$"
+          },
+          "VMs": {
+            "$id": "#/properties/hosts/items/properties/VMs",
+            "type": "array",
+            "title": "The Vms Schema",
+            "description": "VMs currently on the Host",
+            "default": null,
+            "items": {
+              "$id": "#/properties/hosts/items/properties/VMs/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": ["name", "originalStorage", "tempStorage"],
+              "properties": {
+                "name": {
+                  "$id": "#/properties/hosts/items/properties/VMs/items/properties/name",
+                  "type": "string",
+                  "title": "The Name Schema",
+                  "description": "The VM Name",
+                  "default": "",
+                  "examples": ["accpac"],
+                  "pattern": "^(.*)$"
+                },
+                "originalStorage": {
+                  "$id": "#/properties/hosts/items/properties/VMs/items/properties/originalStorage",
+                  "type": "string",
+                  "enum": [
+                    "eql1.cll-hlr2",
+                    "eql1.cll-sgn1",
+                    "eql1.cll-sip1",
+                    "eql1.cll1",
+                    "eql1.mailstore1",
+                    "eql1.netbrain",
+                    "eql1.rep1",
+                    "eql1.rep2",
+                    "eql1.rep3",
+                    "eql1.rep4",
+                    "eql1.rep5",
+                    "eql1.tmp.cll-bll1",
+                    "eql1.tmp.cll-ggn1",
+                    "eql1.tmp.cll-hlr1",
+                    "eql1.tmp.cll1",
+                    "eql1.tmp.rep4",
+                    "eql1.vcsa",
+                    "eql1.vol1",
+                    "eql1.vol2",
+                    "eql1.vol3",
+                    "eql1.vol4",
+                    "eql1.vol5",
+                    "eql2.cll-bll1",
+                    "eql2.cll-ggn1",
+                    "eql2.cll-hlr1",
+                    "eql2.cll1",
+                    "eql2.files",
+                    "eql2.myknet",
+                    "eql2.rep2",
+                    "eql2.rep3",
+                    "eql2.rep4",
+                    "eql2.templates",
+                    "eql2.tmp.cll-hrl2",
+                    "eql2.tmp.cll-sgn1",
+                    "eql2.tmp.cll-sip1",
+                    "eql2.tmp.cll1",
+                    "eql2.tmp.eql1.rep12",
+                    "eql2.tmp.mailstore1",
+                    "eql2.tmp.vcsa",
+                    "eql2.tmp.vol12",
+                    "eql2.tmp.vol45",
+                    "eql2.vcsa",
+                    "eql2.vol1",
+                    "eql2.vol2",
+                    "eql2.vol3",
+                    "eql2.zenoss"
+                  ],
+                  "title": "The Originalstorage Schema",
+                  "description": "vCenter Datastore VM was on before migrations",
+                  "default": "",
+                  "examples": ["eql1.rep1"],
+                  "pattern": "^(.*)$"
+                },
+                "tempStorage": {
+                  "$id": "#/properties/hosts/items/properties/VMs/items/properties/tempStorage",
+                  "type": "string",
+                  "title": "The Tempstorage Schema",
+                  "description": "vCenter Datastore migrated to temporarily for the purpose of removing them from current array",
+                  "default": "",
+                  "examples": ["eql2.tmp.eql1.rep12"],
+                  "pattern": "^(.*)$"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
