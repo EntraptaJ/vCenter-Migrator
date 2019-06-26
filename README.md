@@ -39,6 +39,8 @@ Example
 | `SLACK_TOKEN` | Optional Slack Messages on each VM Migration, time taken to migrate, and message upon completion of all migrations |
 | `SLACK_CHANNEL` | Optional Slack Channel to post in |
 ----
+
+
 **.env Example:**
 ```
 URL="vsphere.local"
