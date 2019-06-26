@@ -30,4 +30,4 @@ Example
 
 MODE 'Original' | 'Temporary'
 
-docker run -it -e USER="Administrator@vsphere.local" -e PASS="password" -e URL="vsphere.local" -e MODE="Original" -v "$PWD/VMs.json:./VMs.json" kristianfjones/vsphere-migrator
+docker run -it -e USER="Administrator@vsphere.local" -e PASS="password" -e URL="vsphere.local" -e MODE="Original" -v "$PWD/VMs.json:/VMs.json" kristianfjones/vsphere-migrator
