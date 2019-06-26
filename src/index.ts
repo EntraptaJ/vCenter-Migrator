@@ -31,7 +31,7 @@ const Start = async () => {
 
   const VMs = await LoadVMsFile();
 
-  for (const VM of VMs) migrateVMStorage(ps, VM)
+  for (const VM of VMs) await migrateVMStorage(ps, VM)
 
   console.log('Done');
   await ps.dispose();
