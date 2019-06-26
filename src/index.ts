@@ -25,6 +25,7 @@ const Start = async () => {
     noProfile: true,
   });
 
+  await run(ps, 'Set-PowerCLIConfiguration -InvalidCertificateAction Ignore -Confirm:$false')
   await run(ps, `Connect-VIServer -Server ${URL} -Protocol https -Username ${username} -Password ${password}`);
 
   const VMs = await LoadVMsFile();
