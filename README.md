@@ -28,9 +28,6 @@ Example
 
 ## Usage
 
-TODO
-Copy your VMs.json file to the same directory as this README
-
 MODE 'Original' | 'Temporary'
 
-docker run -it -e USER="Administrator@vsphere.local" -e PASS="password" -e URL="vsphere.local" -e MODE="Original"
+docker run -it -e USER="Administrator@vsphere.local" -e PASS="password" -e URL="vsphere.local" -e MODE="Original" -v "$PWD/VMs.json:./VMs.json" kristianfjones/vsphere-migrator
