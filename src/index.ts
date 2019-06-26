@@ -1,6 +1,7 @@
 import * as Shell from 'node-powershell';
-import { run } from './lib/run';
 import { readJSON } from 'fs-extra';
+import { run } from './lib/run';
+import { migrateVMStorage } from './lib/Migrate'
 import { VMsType, DataJSON } from './types';
 
 const LoadJSON = <P>(file: string): Promise<P> => readJSON(file);
@@ -16,8 +17,8 @@ const URL = process.env.URL;
 const username = process.env.USER;
 const password = process.env.PASS;
 
-type VMDirection = 'Original' | 'Temporary';
-let Direction: VMDirection = process.env.MODE as VMDirection;
+/* type ModeType = 'VMs' | 'Storage'
+const Mode: ModeType = 'Storage' */
 
 const Start = async () => {
   const ps = new Shell({
@@ -30,11 +31,7 @@ const Start = async () => {
 
   const VMs = await LoadVMsFile();
 
-  for (const { name, originalStorage, tempStorage } of VMs) {
-    const dataStore = Direction === 'Original' ? originalStorage : tempStorage;
-    console.log(`Migrating ${name} to ${dataStore}`);
-    await run(ps, `Get-VM ${name} | Move-VM -Datastore ${dataStore}`);
-  }
+  for (const VM of VMs) migrateVMStorage(ps, VM)
 
   console.log('Done');
   await ps.dispose();
