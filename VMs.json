@@ -2,14 +2,14 @@
   "data": {
     "Hosts": [
       {
-        "name": "172.28.11.45",
-        "VMs": [{ "name": "GNS3", "originalStorage": "VMHost1.vDSK2", "tempStorage": "vmh1.vdsk1" }]
-      },
-      {
-        "name": "172.28.11.46",
+        "name": "vmhost1.srv.kristianjones.xyz",
+        "temporaryHost": "vmhost1.srv.kristianjones.xyz",
         "VMs": [
+          { "name": "GNS3", "originalStorage": "vmh1.vdsk1", "tempStorage": "VMHost1.vDSK2" },
           { "name": "Hello-World", "originalStorage": "VMHost1.vDSK2", "tempStorage": "vmh1.vdsk1" },
-          { "name": "PRTG", "originalStorage": "vmh1.vdsk1", "tempStorage": "VMHost1.vDSK2" }
+          { "name": "PRTG", "originalStorage": "vmh1.vdsk1", "tempStorage": "VMHost1.vDSK2" },
+          { "name": "IDONTEXIST", "originalStorage": "vmh1.vdsk1", "tempStorage": "VMHost1.vDSK2" },
+          { "name": "Apache2-Kieth", "originalStorage": "IDONTEXIST", "tempStorage": "VMHost1.vDSK2" }
         ]
       }
     ]

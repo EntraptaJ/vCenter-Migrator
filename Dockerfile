@@ -42,7 +42,6 @@ COPY --from=1 /usr/bin/node /usr/bin/
 COPY --from=1 /usr/lib/node_modules/ /usr/lib/node_modules/
 COPY --from=1 /usr/lib/libgcc* /usr/lib/libstdc* /usr/lib/
 COPY --from=1 ["/opt/microsoft/powershell", "/opt/microsoft/powershell"]
-RUN node /usr/lib/node_modules/npm/bin/npm-cli install npm -g
 WORKDIR /app
 COPY --from=0 /app/dist/ ./dist/
 COPY package.json /app/

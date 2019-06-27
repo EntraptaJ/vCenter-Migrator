@@ -6,7 +6,13 @@ export interface VMsType {
 
 export interface Info {
   name: string;
+  temporaryHost: string
   VMs: VMsType[];
+}
+
+export interface HostType {
+  name: string
+  temporaryHost: string
 }
 
 export interface DataJSON {
