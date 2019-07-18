@@ -16,7 +16,7 @@ let MSGID: string;
 
 
 const checkExists = async (ps: Shell, name: string, type: 'VMs' | 'Storage') => {
-  const searchResponse = await run(ps, `${type === 'VMs' ? 'Get-VM' : 'Get-Datastore'} -Name ${name} -ErrorAction Ignore`)
+  const searchResponse = await run(ps, `${type === 'VMs' ? 'Get-VM' : 'Get-Datastore'} -Name "${name}" -ErrorAction Ignore`)
   return searchResponse.length > 0
 }
 
